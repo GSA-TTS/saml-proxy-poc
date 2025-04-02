@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "oidc/callback" => "pages#callback"
+  get "login" => "oidc#login"
+  get "oidc/callback" => "oidc#callback"
   root "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

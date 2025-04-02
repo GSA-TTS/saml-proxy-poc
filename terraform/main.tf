@@ -13,7 +13,7 @@ module "app_space" {
   allow_ssh            = var.allow_space_ssh
   deployers            = local.space_deployers
   developers           = var.space_developers
-  security_group_names = ["trusted_local_networks_egress"]
+  security_group_names = ["public_networks_egress"]
 }
 
 data "cloudfoundry_service_plans" "uaa_service" {
@@ -27,6 +27,17 @@ resource "cloudfoundry_service_instance" "uaa_authentication_service" {
   space        = module.app_space.space_id
   service_plan = data.cloudfoundry_service_plans.uaa_service.service_plans.0.id
   depends_on   = [module.app_space]
+}
+
+resource "cloudfoundry_service_credential_binding" "uaa_dev_key" {
+  name             = "uaa-dev-key"
+  service_instance = cloudfoundry_service_instance.uaa_authentication_service.id
+  type             = "key"
+  parameters       = jsonencode({ redirect_uri = ["http://localhost:3000/oidc/callback"] })
+}
+moved {
+  from = cloudfoundry_service_credential_binding.uaa_key
+  to = cloudfoundry_service_credential_binding.uaa_dev_key
 }
 
 ###########################################################################

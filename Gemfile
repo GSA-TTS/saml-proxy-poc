@@ -17,6 +17,10 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem "openid_connect", "~> 2.3"
+gem "net-http", "~> 0.6"
+gem "jwt", "~> 2.10"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 

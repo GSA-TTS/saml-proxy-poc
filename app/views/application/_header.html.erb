@@ -18,7 +18,7 @@
       </button>
       <ul class="usa-nav__primary usa-accordion">
         <li class="usa-nav__primary-item">
-          <%= link_to "Log in", "https://login.fr.cloud.gov/oauth/authorize?client_id=#{CloudGovConfig.dig("cloud-gov-identity-provider", "credentials", "client_id")}&response_type=code&state=#{SecureRandom.base64}" %>
+          <%= link_to "Login", login_path %>
         </li>
       </ul>
     </nav>
