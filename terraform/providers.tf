@@ -3,7 +3,7 @@ terraform {
   required_providers {
     cloudfoundry = {
       source  = "cloudfoundry/cloudfoundry"
-      version = "1.2.0"
+      version = "1.4.0"
     }
   }
 
@@ -14,9 +14,4 @@ terraform {
   }
 }
 
-provider "cloudfoundry" {
-  api_url  = "https://api.fr.cloud.gov"
-  user     = var.cf_user
-  password = var.cf_password
-}
-
+provider "cloudfoundry" {}

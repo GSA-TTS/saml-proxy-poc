@@ -6,7 +6,7 @@ locals {
 
 
 module "app_space" {
-  source = "github.com/gsa-tts/terraform-cloudgov//cg_space?ref=v2.1.0"
+  source = "github.com/gsa-tts/terraform-cloudgov//cg_space?ref=v2.3.0"
 
   cf_org_name          = local.cf_org_name
   cf_space_name        = var.cf_space_name
@@ -15,19 +15,6 @@ module "app_space" {
   developers           = var.space_developers
   security_group_names = ["trusted_local_networks_egress"]
 }
-
-
-module "database" {
-  source = "github.com/gsa-tts/terraform-cloudgov//database?ref=v2.1.0"
-
-  cf_space_id   = module.app_space.space_id
-  name          = "${local.app_name}-rds-${var.env}"
-  rds_plan_name = var.rds_plan_name
-  # depends_on line is required only for initial creation and destruction. It can be commented out for updates if you see unwanted cascading effects
-  depends_on = [module.app_space]
-}
-
-
 
 ###########################################################################
 # Before setting var.custom_domain_name, perform the following steps:
@@ -38,7 +25,7 @@ module "database" {
 ###########################################################################
 module "domain" {
   count  = (var.custom_domain_name == null ? 0 : 1)
-  source = "github.com/gsa-tts/terraform-cloudgov//domain?ref=v2.1.0"
+  source = "github.com/gsa-tts/terraform-cloudgov//domain?ref=v2.3.0"
 
   cf_org_name   = local.cf_org_name
   cf_space      = module.app_space.space

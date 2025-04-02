@@ -44,20 +44,11 @@ resource "cloudfoundry_app" "app" {
       memory                     = var.web_memory
       health_check_http_endpoint = "/up"
       health_check_type          = "http"
-      command                    = "./bin/rake cf:on_first_instance db:migrate && exec env HTTP_PORT=$PORT ./bin/thrust ./bin/rails server"
+      command                    = "./bin/rake db:migrate && exec env HTTP_PORT=$PORT ./bin/thrust ./bin/rails server"
     }
   ]
 
-  service_bindings = [
-
-
-    { service_instance = "${local.app_name}-rds-${var.env}" }
-  ]
-
   depends_on = [
-
-
-    module.app_space,
-    module.database
+    module.app_space
   ]
 }
