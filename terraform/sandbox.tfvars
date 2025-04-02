@@ -1,4 +1,4 @@
-cf_user = "ryan.ahearn@gsa.gov"
+cf_user         = "ryan.ahearn@gsa.gov"
 cf_space_name   = "saml-proxy-sandbox"
 env             = "staging"
 allow_space_ssh = true

@@ -16,6 +16,19 @@ module "app_space" {
   security_group_names = ["trusted_local_networks_egress"]
 }
 
+data "cloudfoundry_service_plans" "uaa_service" {
+  name                  = "oauth-client"
+  service_offering_name = "cloud-gov-identity-provider"
+}
+
+resource "cloudfoundry_service_instance" "uaa_authentication_service" {
+  name         = "uaa-auth-service"
+  type         = "managed"
+  space        = module.app_space.space_id
+  service_plan = data.cloudfoundry_service_plans.uaa_service.service_plans.0.id
+  depends_on   = [module.app_space]
+}
+
 ###########################################################################
 # Before setting var.custom_domain_name, perform the following steps:
 # 1) Domain must be manually created by an OrgManager:

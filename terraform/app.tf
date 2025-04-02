@@ -48,7 +48,17 @@ resource "cloudfoundry_app" "app" {
     }
   ]
 
+  service_bindings = [{
+    service_instance = cloudfoundry_service_instance.uaa_authentication_service.name,
+    params = jsonencode({
+      redirect_uri = [
+        "https://${local.host_name}.${local.domain}/auth/oidc"
+      ]
+    })
+  }]
+
   depends_on = [
-    module.app_space
+    module.app_space,
+    cloudfoundry_service_instance.uaa_authentication_service
   ]
 }
