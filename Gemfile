@@ -55,3 +55,7 @@ gem "rails-erd", "~> 1.7", group: :development
 group :development, :test do
   gem "i18n-tasks", "~> 1.0"
 end
+
+group :test do
+  gem "climate_control", "~> 1.2"
+end
