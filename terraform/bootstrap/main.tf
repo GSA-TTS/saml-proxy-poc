@@ -3,7 +3,7 @@ terraform {
   required_providers {
     cloudfoundry = {
       source  = "cloudfoundry/cloudfoundry"
-      version = "1.2.0"
+      version = "1.4.0"
     }
   }
 }
@@ -33,10 +33,10 @@ variable "create_bot_secrets_file" {
 locals {
   org_name = "gsa-tts-devtools-prototyping"
   # s3_plan_name should be basic when holding production data, though basic-sandbox will make early iterations easier
-  s3_plan_name = "basic"
+  s3_plan_name = "basic-sandbox"
 }
 module "mgmt_space" {
-  source = "github.com/gsa-tts/terraform-cloudgov//cg_space?ref=v2.1.0"
+  source = "github.com/gsa-tts/terraform-cloudgov//cg_space?ref=v2.3.0"
 
   cf_org_name   = local.org_name
   cf_space_name = var.mgmt_space_name
@@ -44,7 +44,7 @@ module "mgmt_space" {
 }
 
 module "s3" {
-  source = "github.com/gsa-tts/terraform-cloudgov//s3?ref=v2.1.0"
+  source = "github.com/gsa-tts/terraform-cloudgov//s3?ref=v2.3.0"
 
   cf_space_id  = module.mgmt_space.space_id
   name         = "saml_proxy-terraform-state"
