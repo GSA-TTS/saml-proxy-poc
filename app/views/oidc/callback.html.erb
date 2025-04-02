@@ -1,7 +1,16 @@
-<h1>Pages#callback</h1>
-<h2>Params</h2>
-<pre>
-<%= JSON.pretty_generate params.permit!.to_h %>
-</pre>
-<h2>JWT</h2>
-<pre><%= JSON.pretty_generate @jwt %></pre>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  </head>
+  <body onload="document.forms[0].submit();" style="visibility:hidden;">
+    <%= form_tag(saml_auth_path) do %>
+      <%= hidden_field_tag("SAMLRequest", session[:SAMLRequest]) %>
+      <%= hidden_field_tag("RelayState", session[:RelayState]) %>
+      <%= hidden_field_tag("state", params[:state]) %>
+      <%= hidden_field_tag("token", @token) %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+  </body>
+</html>

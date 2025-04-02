@@ -333,6 +333,12 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
+    saml_idp (0.16.0)
+      activesupport (>= 5.2)
+      builder (>= 3.0)
+      nokogiri (>= 1.6.2)
+      rexml
+      xmlenc (>= 0.7.1)
     secure_headers (7.1.0)
     securerandom (0.4.1)
     sqlite3 (2.6.0-aarch64-linux-gnu)
@@ -393,6 +399,13 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    xmlenc (0.8.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      nokogiri (>= 1.6.0, < 2.0.0)
+      xmlmapper (>= 0.7.3)
+    xmlmapper (0.8.1)
+      nokogiri (~> 1.11)
     zeitwerk (2.7.2)
 
 PLATFORMS
@@ -427,6 +440,7 @@ DEPENDENCIES
   rails-erd (~> 1.7)
   rails_template_18f
   rspec-rails (~> 7.1)
+  saml_idp (~> 0.16)
   secure_headers (~> 7.1)
   sqlite3 (>= 2.1)
   standard (~> 1.43)
