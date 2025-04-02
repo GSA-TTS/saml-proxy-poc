@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "private": true,
+  "devDependencies": {
+    "browserslist": "^4.24.4",
+    "browserslist-to-esbuild": "^2.1.1",
+    "esbuild": "^0.25.2",
+    "pa11y-ci": "^3.1.0"
+  },
+  "scripts": {
+    "build": "yarn build:js --minify",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules/@uswds/uswds/packages --style=compressed",
+    "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --target=$(cat config/esbuild-targets.txt) --pure:console.log",
+    "update-browserslist": "update-browserslist-db && browserslist-to-esbuild | sed 's/ /,/g' > config/esbuild-targets.txt"
+  },
+  "dependencies": {
+    "@uswds/uswds": "^3.12.0",
+    "sass": "^1.86.1"
+  }
+}
