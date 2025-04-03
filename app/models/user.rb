@@ -15,6 +15,10 @@ class User
     @user_id = fields["user_id"]
   end
 
+  def persistent
+    email
+  end
+
   def asserted_attributes
     {
       email: {

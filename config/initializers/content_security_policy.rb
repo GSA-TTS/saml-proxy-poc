@@ -8,7 +8,7 @@ Rails.application.configure do
   config.content_security_policy do |policy|
     policy.default_src :self
     policy.font_src :self
-    policy.form_action :self, "localhost/", "gsa.gitlab-dedicated.us/"
+    policy.form_action :self, "localhost:3000/", "gsa.gitlab-dedicated.us/"
     policy.frame_ancestors :none
     policy.img_src :self, :data
     policy.object_src :none

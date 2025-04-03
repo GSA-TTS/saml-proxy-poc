@@ -35,11 +35,12 @@ class SamlIdpController < ApplicationController
 
   def idp_make_saml_response(person)
     # NOTE encryption is optional
-    encode_response person, encryption: {
-      cert: saml_request.service_provider.cert,
-      block_encryption: 'aes256-cbc',
-      key_transport: 'rsa-oaep-mgf1p'
-    }
+    encode_response person
+    # , encryption: {
+    #   cert: saml_request.service_provider.cert,
+    #   block_encryption: 'aes256-cbc',
+    #   key_transport: 'rsa-oaep-mgf1p'
+    # }
   end
   protected :idp_make_saml_response
 end

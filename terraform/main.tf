@@ -33,11 +33,7 @@ resource "cloudfoundry_service_credential_binding" "uaa_dev_key" {
   name             = "uaa-dev-key"
   service_instance = cloudfoundry_service_instance.uaa_authentication_service.id
   type             = "key"
-  parameters       = jsonencode({ redirect_uri = ["http://localhost:3000/oidc/callback"] })
-}
-moved {
-  from = cloudfoundry_service_credential_binding.uaa_key
-  to = cloudfoundry_service_credential_binding.uaa_dev_key
+  parameters       = jsonencode({ redirect_uri = ["http://localhost:3001/oidc/callback"] })
 }
 
 ###########################################################################
