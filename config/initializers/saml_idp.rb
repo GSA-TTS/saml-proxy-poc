@@ -1,7 +1,7 @@
 SamlIdp.configure do |config|
   service_providers = {
     "CAPOC" => {
-      response_hosts: ["localhost"]
+      response_hosts: ["localhost", "capoc-saml.app.cloud.gov"]
     }
   }
   config.entity_id = "UAA-SAML-Proxy"
