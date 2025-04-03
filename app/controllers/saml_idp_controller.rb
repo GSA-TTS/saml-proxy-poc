@@ -28,6 +28,7 @@ class SamlIdpController < ApplicationController
   end
 
   def logout
+    session.clear
     @saml_response = idp_make_saml_response(nil)
     render template: "create", layout: false
   end

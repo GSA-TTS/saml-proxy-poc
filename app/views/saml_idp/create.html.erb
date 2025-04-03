@@ -3,8 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <%= content_tag(:style, nonce: content_security_policy_nonce) do %>
+      body { visibility: hidden; }
+    <% end %>
+    <%= javascript_tag nonce: true do%>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.forms[0].submit();
+      })
+    <% end %>
   </head>
-  <body onload="document.forms[0].submit();" style="visibility:hidden;">
+  <body>
     <%= form_tag(saml_acs_url) do %>
       <%= hidden_field_tag("SAMLResponse", @saml_response) %>
       <%= hidden_field_tag("RelayState", params[:RelayState]) %>
