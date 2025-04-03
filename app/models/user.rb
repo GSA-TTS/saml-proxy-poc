@@ -14,4 +14,14 @@ class User
     @email = fields["email"]
     @user_id = fields["user_id"]
   end
+
+  def asserted_attributes
+    {
+      email: {
+        getter: :email,
+        name_format: Saml::XML::Namespaces::Formats::NameId::EMAIL_ADDRESS,
+        name_id_format: Saml::XML::Namespaces::Formats::NameId::EMAIL_ADDRESS
+      }
+    }
+  end
 end
