@@ -50,7 +50,7 @@ group :development, :test do
   gem "rspec-rails", "~> 7.1"
   gem "dotenv-rails", "~> 3.1"
   gem "bundler-audit", "~> 0.9"
-  gem "standard", "~> 1.43"
+  gem "standard", "~> 1.49"
 end
 gem "rails_template_18f", group: :development
 gem "rails-erd", "~> 1.7", group: :development
