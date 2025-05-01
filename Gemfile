@@ -47,7 +47,7 @@ end
 gem "secure_headers", "~> 7.1"
 
 group :development, :test do
-  gem "rspec-rails", "~> 7.1"
+  gem "rspec-rails", "~> 8.0"
   gem "dotenv-rails", "~> 3.1"
   gem "bundler-audit", "~> 0.9"
   gem "standard", "~> 1.49"
